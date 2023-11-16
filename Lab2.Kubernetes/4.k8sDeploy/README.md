@@ -7,20 +7,25 @@ kubectl get deployments.apps
 ```
 ## 2. httpd 이미지를 사용하는 h1 Deploy를 생성하시오 (80번 포트 Open)
 ```
-kubectl ~
+kubectl create deployment --image=httpd httpd
 ```
 
 ## 3. h1 deploy의 80번 포트를 Service로 Open하시오.
 ```
-kubectl ~
+kubectl expose deployment httpd --type="NodePort" --port 80
 ```
 
 ## 4. h1 deploy의 복제 갯수를 3으로 늘리시오.
 ```
-kubectl ~
+kubectl scale deployment httpd --replicas=3
 ```
 
 ## 5. 위에서 생성한 모든 deploy,service를 삭제하시오.
 ```
-kubectl ~
+서비스부터 삭제
+kubectl get service
+kubectl delete service httpd
+deployment삭제
+kubectl get deployments.apps
+kubectl delete deployments.apps httpd
 ```
